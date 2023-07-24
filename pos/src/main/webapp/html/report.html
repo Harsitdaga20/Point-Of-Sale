@@ -1,0 +1,224 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="snippets.html :: name_head"></th:block>
+    <link rel="stylesheet" th:href="@{/static/css/report.css}">
+</head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+
+
+<div class="container mt-2">
+    <h3 class="font-weight-bold">Reports</h3>
+    <div class="row mt-6">
+        <!-- Team member 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="image-flip">
+                <div class="mainflip flip-0">
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class="img-fluid" th:src="@{/static/images/brandreport.png}" alt="card image">
+                                </p>
+                                <h4 class="card-title">Brands</h4>
+                                <p class="card-text">Get your brands report here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backside w-100">
+                        <div class="card">
+                            <div class="card-body text-center mt-4">
+                                <h4 class="card-title">Brands</h4>
+                                <form id="brand-form">
+                                    <button type="button" class="btn btn-outline-success">Download Report</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Team member 1 -->
+
+        <!-- Team member 2 -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="image-flip">
+                <div class="mainflip">
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class="img-fluid" th:src="@{/static/images/inventoryreport.jpeg}"
+                                        alt="card image"></p>
+                                <h4 class="card-title">Inventory</h4>
+                                <p class="card-text">Get your inventory report from here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backside w-100">
+                        <div class="card">
+                            <div class="card-body text-center mt-4">
+                                <h4 class="card-title">Inventory</h4>
+                                <form id="inventory-form">
+                                    <div class="form-group">
+                                        <label for="brandSelect1" class="form-label font-weight-bold">Brand</label>
+                                        <select class="custom-select is-invalid" name="brand" id="brandSelect1"
+                                                required>
+                                            <option value="">Select the Brand</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please provide a brand name.
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="categorySelect1"
+                                               class="form-label font-weight-bold">Category</label>
+                                        <select class="custom-select is-invalid" name="category" id="categorySelect1"
+                                                required>
+                                            <option value="">Select the Category</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please provide a category name.
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-success">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Team member 2 -->
+
+        <!-- Team member 3 -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="image-flip">
+                <div class="mainflip">
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class="img-fluid" th:src="@{/static/images/salesreport.png}" alt="card image">
+                                </p>
+                                <h4 class="card-title">Daily Sales</h4>
+                                <p class="card-text">Get your daily sales report from here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backside w-100">
+                        <div class="card">
+                            <div class="card-body text-center mt-4">
+                                <h4 class="card-title">Daily Sales</h4>
+                                <form id="daily-sales-form" class="w-100">
+                                    <div class="form-group">
+                                        <label for="start" class="form-label font-weight-bold">Start Date</label>
+                                        <div class="input-group">
+                                            <input type="date" class="form-control is-invalid" id="start" name="start"
+                                                   placeholder="Choose date" max="">
+                                            <div class="invalid-feedback">
+                                                Please select a date.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="end" class="form-label font-weight-bold">End Date</label>
+                                        <div class="input-group">
+                                            <input type="date" class="form-control is-invalid" id="end" name="end"
+                                                   placeholder="Choose date" max="">
+                                            <div class="invalid-feedback">
+                                                Please select a date.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-success">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Team member 3 -->
+
+        <!-- Team member 4 -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="image-flip">
+                <div class="mainflip">
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class="img-fluid" th:src="@{/static/images/revenuereport.jpeg}"
+                                        alt="card image"></p>
+                                <h4 class="card-title">Revenue</h4>
+                                <p class="card-text">Get your revenue report from here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backside w-100">
+                        <div class="card">
+                            <div class="card-body text-center mt-4">
+                                <h4 class="card-title">Revenue</h4>
+                                <form id="revenue-form">
+                                    <div class="form-group">
+                                        <label for="brandSelect2" class="form-label font-weight-bold">Brand</label>
+                                        <select class="custom-select is-invalid" name="brand" id="brandSelect2"
+                                                required>
+                                            <option value="">Select the Brand</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a brand.
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="categorySelect2"
+                                               class="form-label font-weight-bold">Category</label>
+                                        <select class="custom-select is-invalid" name="category" id="categorySelect2"
+                                                required>
+                                            <option value="">Select the Category</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a category.
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="start" class="form-label font-weight-bold">Start Date</label>
+                                        <div class="input-group">
+                                            <input type="date" class="form-control is-invalid" id="start" name="start"
+                                                   placeholder="Choose date" max="">
+                                            <div class="invalid-feedback">
+                                                Please select a date.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="end" class="form-label font-weight-bold">End Date</label>
+                                        <div class="input-group">
+                                            <input type="date" class="form-control is-invalid" id="end" name="end"
+                                                   placeholder="Choose date" max="">
+                                            <div class="invalid-feedback">
+                                                Please select a date.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-success">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Team member 4 -->
+    </div>
+</div>
+
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/js/report.js}"/>
+</script>
+</body>
+
+</html>

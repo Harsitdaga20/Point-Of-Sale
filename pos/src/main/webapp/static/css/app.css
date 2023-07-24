@@ -1,0 +1,129 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px; /* Set the fixed height of the footer here */
+	line-height: 60px; /* Vertically center the text there */
+	text-align: center;
+	background-color: #f5f5f5;
+}
+
+.border-info {
+  border-color: #17a2b8 !important;
+  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25) !important;
+}
+
+.fas{
+    font-size: 4rem;
+}
+.nav-logo{
+width:120px;
+}
+.logo{
+width:120px;
+}
+.image{
+width:550px;
+height:360px;
+}
+
+.navbar-nav .nav-item.active .nav-link{
+  color: blue;
+  font-weight:300;
+  font-size: 19px;
+}
+.navbar-nav .nav-item .nav-link{
+  font-size: 17px;
+}
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+}
+.navbar-nav .nav-item:hover .nav-link {
+  color: blue;
+}
+label:not(.dataTables_filter label)::after {
+    content: " *";
+    color: red;
+}
+
+.dataTables_filter {
+  text-align: center;
+}
+
+.dataTables_filter label {
+  display: inline-block;
+  margin-top: 0.3em;
+  color: rgba(218, 208, 190, 1);
+  text-shadow: 0 0 0.1em rgba(60, 60, 60, 0.3);
+  position: relative;
+  left: 0.1em;
+}
+
+.dataTables_filter input[type="search"] {
+  transition: all 0.2s ease-out;
+  width: 1px;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid white; /* Add a white border */
+  background-color: transparent;
+  color: black; /* Change the text color to white */
+  opacity: 0;
+}
+
+.dataTables_filter input[type="search"]:focus {
+  width: 12em; /* Increase the width on focus */
+  opacity: 1;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+  position: relative;
+}
+
+.dataTables_wrapper .dataTables_filter label::before {
+  content: '\f002'; /* Unicode for search icon */
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -1em; /* Adjust the left position as needed */
+  color: rgba(218, 208, 190, 1);
+  font-size: 16px;
+  cursor: pointer; /* Add cursor style for pointer interaction */
+}
+.mode{
+    padding:4px 10px;
+    line-height: 13px;
+    color:#fff;
+    font-weight: 400;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    font-size:1rem;
+    letter-spacing: 0.4px;
+}
+.mode_on{
+    background-color: #09922d;
+}
+.mode_off{
+    background-color: #8b9096;
+}
+#itemTable td {
+  white-space: pre-wrap;
+}
+ackground-color: transparent;
+}

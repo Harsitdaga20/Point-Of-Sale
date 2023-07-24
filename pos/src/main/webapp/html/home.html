@@ -1,0 +1,136 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <head th:replace="snippets.html :: name_head"></head>
+    <link rel="stylesheet" th:href="@{/static/css/home.css}">
+</head>
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+
+<div class="container mt-2">
+    <h3>Home</h3>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="preview-card">
+                <div class="preview-card__wrp">
+                    <div class="preview-card__item">
+                        <div class="preview-card__img">
+                            <img th:src="@{/static/images/brand.jpeg}" alt="Card image cap">
+                        </div>
+                        <div class="preview-card__content">
+                            <div class="preview-card__title">Brands-Categories</div>
+                            <div class="preview-card__text">Take full control of your retail store's brand identity and
+                                product categorization with the Brand and Category. Seamlessly organize
+                                brand information, ensuring a consistent and memorable brand presence. Categorize
+                                your products efficiently, making it easy for you to navigate and find what customer's
+                                looking for quickly.
+                            </div>
+                            <a th:href="@{/ui/brands}" class="preview-card__button">Discover More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="preview-card">
+                <div class="preview-card__wrp">
+                    <div class="preview-card__item">
+                        <div class="preview-card__img">
+                            <img th:src="@{/static/images/product.png}" alt="Card image cap">
+                        </div>
+                        <div class="preview-card__content">
+                            <div class="preview-card__title">Products</div>
+                            <div class="preview-card__text">With the Product managing your store's products becomes a
+                                breeze. Add, update, and enrich product details for each brand and category.
+                            </div>
+                            <a th:href="@{/ui/products}" class="preview-card__button">Discover More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="preview-card">
+                <div class="preview-card__wrp">
+                    <div class="preview-card__item">
+                        <div class="preview-card__img">
+                            <img th:src="@{/static/images/inventory.jpeg}" alt="Card image cap">
+                        </div>
+                        <div class="preview-card__content">
+                            <div class="preview-card__title">Inventory</div>
+                            <div class="preview-card__text">Never worry about stock levels again with the Inventory.
+                                Stay on top of your store's inventory by updating product quantities as new shipments
+                                arrive or items are sold. Stay alerts to ensure timely restocking and
+                                maintain optimal stock levels for your most popular items.
+                            </div>
+                            <a th:href="@{/ui/inventory}" class="preview-card__button">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-card">
+                <div class="preview-card__wrp">
+                    <div class="preview-card__item">
+                        <div class="preview-card__img">
+                            <img th:src="@{/static/images/orders.jpeg}" alt="">
+                        </div>
+                        <div class="preview-card__content">
+                            <div class="preview-card__title">Orders</div>
+                            <div class="preview-card__text">
+                                The Order Processing and Invoicing streamlines your store's sales process. Create,
+                                edit, and view customer orders effortlessly, ensuring a smooth and efficient checkout
+                                experience. Generate and download order invoices for seamless billing and record-keeping
+                                , making the entire purchase journey a breeze for your customers.
+                            </div>
+                            <a th:href="@{/ui/orders}" class="preview-card__button">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-card" th:if="${info.getRole() eq 'supervisor'}">
+                <div class="preview-card__wrp">
+                    <div class="preview-card__item">
+                        <div class="preview-card__img">
+                            <img th:src="@{/static/images/reports.png}" alt="report image">
+                        </div>
+                        <div class="preview-card__content">
+                            <div class="preview-card__title">Reports</div>
+                            <div class="preview-card__text">
+                                Gain valuable insights into your store's performance with the Reporting.Access
+                                comprehensive
+                                reports on inventory levels, sales trends, revenue reports, and brands. Leverage this
+                                data to make informed decisions, identify top-selling products, and optimize your
+                                store's overall profitability.
+                            </div>
+                            <a th:href="@{/ui/supervisor/reports}" class="preview-card__button">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div> <!-- Container end-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script>
+	$(document).ready(function(){
+		const navbarContainer = document.getElementById('navbarContainer');
+		const navItems = navbarContainer.querySelectorAll('.navbar-nav > .nav-item');
+		navItems.forEach(item => {
+		   item.classList.remove('active')});
+		const navItem = document.getElementById('home-nav');
+		navItem.classList.add('active');
+	});
+
+</script>
+</body>
+
+</html>

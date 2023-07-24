@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="baseUrl" th:attr="content=${baseUrl}">
+
+    <script src="https://kit.fontawesome.com/c30beb553f.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/static/css/app.css}">
+    <link rel="stylesheet" th:href="@{/static/css/login.css}">
+</head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_site_navbar"></nav>
+<div class="wrapper">
+    <div class="logo">
+        <img th:src="@{/static/images/logoround.png}" alt="logo">
+    </div>
+    <div class="text-center mt-4 name">
+        Increff POS
+    </div>
+    <form class="p-3 mt-3" id="login-form" autocomplete="off" method="POST" th:action="@{/session/signup}">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="email" name="email" id="email" placeholder="Email" required
+                   pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder="Password" required pattern=".{8,}" min="8"
+                   title="Eight or more characters">
+        </div>
+        <button class="btn mt-3">SignUp</button>
+    </form>
+    <div class="text-center fs-6">
+        <a th:href="@{/site/login}">Log In</a>
+        <br>
+        <span style="color: red;">[[${info.getMessage()}]]</span>
+        [[${info.setMessage("")}]]
+    </div>
+</div>
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+</body>
+
+</html>
