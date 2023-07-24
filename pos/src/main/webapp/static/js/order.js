@@ -64,7 +64,7 @@ function updateTableView(){
     var row =
       "<tr>" +
       "<td>" + product.productName + "</td>" +
-      "<td>" + (product.sellingPrice ? parseFloat(product.sellingPrice).toFixed(2) : '.00')+ "</td>" +
+      "<td class=\"text-right\">" + (product.sellingPrice ? parseFloat(product.sellingPrice).toFixed(2) : '.00')+ "</td>" +
       "<td>" + product.quantity + "</td>" +
       "</tr>";
     tableBody.append(row);

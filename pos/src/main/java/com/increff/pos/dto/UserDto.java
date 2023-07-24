@@ -32,6 +32,14 @@ public class UserDto {
 
     public ModelAndView login(HttpServletRequest request, LoginForm loginForm) {
         NormalizeUtil.normalizeLoginForm(loginForm);
+        try{
+            ValidateFormUtil.validateForm(loginForm);
+        }
+        catch(Exception e){
+            infoData.setMessage(e.getMessage());
+            return new ModelAndView("redirect:/site/login");
+        }
+
         UserPojo userPojo = userService.getCheckUserByEmail(loginForm.getEmail());
         boolean validatePassword = false;
         try {
@@ -58,6 +66,7 @@ public class UserDto {
 
     public ModelAndView signup(HttpServletRequest req, LoginForm loginForm) {
         NormalizeUtil.normalizeLoginForm(loginForm);
+
         try {
             ValidateFormUtil.validateForm(loginForm);
         } catch (Exception e) {

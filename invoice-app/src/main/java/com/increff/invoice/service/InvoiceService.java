@@ -7,13 +7,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class InvoiceService{
 
-    @Autowired
-    private CreateXMLFile createXMLFile;
-    @Autowired
-    private GeneratePDFFromFOP generatePDFFromFOP;
-
     public void generatePdf(InvoiceForm invoiceForm){
+        CreateXMLFile createXMLFile=new CreateXMLFile();
         createXMLFile.convertToXml(invoiceForm);
+        GeneratePDFFromFOP generatePDFFromFOP=new GeneratePDFFromFOP();
         generatePDFFromFOP.generatePDF();
     }
 

@@ -36,7 +36,6 @@ import static com.increff.pos.util.NormalizeUtil.normalizeCartItemForm;
 public class OrderDto {
 
     private static final String pdf_Path = "src/main/resources/pdf/";
-
     private static final String url = "http://localhost:8080/invoice_app/api/invoices";
     @Autowired
     private OrderService orderService;

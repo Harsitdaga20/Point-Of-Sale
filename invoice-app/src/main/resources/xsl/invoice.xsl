@@ -58,19 +58,35 @@
                                         <fo:block><xsl:value-of select="serialNumber"/></fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border="solid" text-align="start" padding="3pt">
-                                        <fo:block><xsl:value-of select="productName"/></fo:block>
+                                        <fo:block wrap-option="wrap"><xsl:value-of select="productName"/></fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border="solid" text-align="start" padding="3pt">
-                                        <fo:block><xsl:value-of select="barcode"/></fo:block>
+                                        <fo:block ><xsl:value-of select="barcode"/></fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border="solid" text-align="center" padding="3pt">
                                         <fo:block><xsl:value-of select="quantity"/></fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border="solid" text-align="center" padding="3pt">
-                                        <fo:block><xsl:value-of select="sellingPrice"/></fo:block>
+                                        <fo:block>
+                                            <xsl:attribute name="font-size">
+                                                <xsl:choose>
+                                                    <xsl:when test="string-length(sellingPrice) &gt; 8">9pt</xsl:when>
+                                                    <xsl:otherwise>10pt</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="sellingPrice"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border="solid" text-align="end" padding="3pt">
-                                        <fo:block><xsl:value-of select="amount"/></fo:block>
+                                        <fo:block>
+                                            <xsl:attribute name="font-size">
+                                                <xsl:choose>
+                                                    <xsl:when test="string-length(amount) &gt; 8">9pt</xsl:when>
+                                                    <xsl:otherwise>10pt</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="amount"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </xsl:for-each>

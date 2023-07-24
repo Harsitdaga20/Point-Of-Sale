@@ -18,11 +18,10 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.text.DecimalFormat;
 
-@Service
+
 public class CreateXMLFile {
 
-    @Autowired
-    private PathData pathData;
+
     
 
     public void convertToXml(InvoiceForm invoiceForm) {
@@ -72,14 +71,11 @@ public class CreateXMLFile {
                 orderItemElement.appendChild(quantityElement);
 
                 Element sellingPriceElement = doc.createElement("sellingPrice");
-                double roundedPrice = roundToTwoDecimalPlaces(orderItemData.getSellingPrice());
-                sellingPriceElement.setTextContent(String.valueOf(roundedPrice));
+                sellingPriceElement.setTextContent(new DecimalFormat("#.##").format(orderItemData.getSellingPrice()));
                 orderItemElement.appendChild(sellingPriceElement);
 
                 Element amountElement = doc.createElement("amount");
-                double roundedPriceAmount =
-                        roundToTwoDecimalPlaces(orderItemData.getSellingPrice()*orderItemData.getQuantity());
-                amountElement.setTextContent(String.valueOf(roundedPriceAmount));
+                amountElement.setTextContent(new DecimalFormat("#.##").format(orderItemData.getSellingPrice()*orderItemData.getQuantity()));
                 orderItemElement.appendChild(amountElement);
 
                 index++;
@@ -92,25 +88,18 @@ public class CreateXMLFile {
             invoiceElement.appendChild(totalQuantityElement);
 
             Element totalAmountElement = doc.createElement("totalAmount");
-            double roundedPriceTotalAmount = roundToTwoDecimalPlaces(totalAmount);
-            totalAmountElement.setTextContent(String.valueOf(roundedPriceTotalAmount));
+            totalAmountElement.setTextContent(new DecimalFormat("#.##").format(totalAmount));
             invoiceElement.appendChild(totalAmountElement);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(pathData.getXmlFilePath()));
+
+            StreamResult result = new StreamResult(new File(PathData.xmlFilePath));
             transformer.transform(source, result);
 
         } catch (ParserConfigurationException | javax.xml.transform.TransformerException e) {
             e.printStackTrace();
         }
-    }
-    private static double roundToTwoDecimalPlaces(Double value) {
-        if (value == null) {
-            return 0.0;
-        }
-        DecimalFormat df = new DecimalFormat("#.##");
-        return Double.parseDouble(df.format(value));
     }
 }
