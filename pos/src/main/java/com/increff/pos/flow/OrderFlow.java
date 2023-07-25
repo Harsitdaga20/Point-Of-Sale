@@ -63,24 +63,21 @@ public class OrderFlow {
     private void checkForInventoryExistAndMrpForCart(List<CartItemForm> cartItemFormList) throws ApiException {
         StringBuilder errorMessage = new StringBuilder();
         for (CartItemForm cartItemForm : cartItemFormList) {
-            ProductPojo productPojo = productService.getByBarcode(cartItemForm.getBarcode());
-            InventoryPojo inventoryPojo = inventoryService.getCheckProductId(productPojo.getId());
-            String productName = productPojo.getName();
-            if (inventoryPojo.getQuantity() < cartItemForm.getQuantity()) {
-                errorMessage
-                        .append("No inventory Present for the item :")
-                        .append(productName)
-                        .append(". Total quantity left is :")
-                        .append(inventoryPojo.getQuantity())
-                        .append(". *");
+            try{
+                ProductPojo productPojo = productService.getByBarcode(cartItemForm.getBarcode());
+                InventoryPojo inventoryPojo = inventoryService.getCheckProductId(productPojo.getId());
+                String productName = productPojo.getName();
+                if (inventoryPojo.getQuantity() < cartItemForm.getQuantity()) {
+                    throw new ApiException("No inventory Present for the item :"
+                            +productName+". Total quantity left is : "+inventoryPojo.getQuantity()+". *");
+                }
+                if (cartItemForm.getSellingPrice() > productPojo.getMrp()) {
+                    throw new ApiException("Selling price for "
+                            +productPojo.getName()+" can't be greater than "+productPojo.getMrp()+". *");
+                }
             }
-            if (cartItemForm.getSellingPrice() > productPojo.getMrp()) {
-                errorMessage
-                        .append("Selling price for")
-                        .append(productPojo.getName())
-                        .append("can't be greater than")
-                        .append(productPojo.getMrp())
-                        .append(". *");
+            catch(Exception e){
+                errorMessage.append(e.getMessage());
             }
         }
         String errors = errorMessage.toString();
