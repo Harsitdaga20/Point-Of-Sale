@@ -37,7 +37,7 @@ function openModal(mode, id) {
       $("#modalSubmitButton").hide();
 
       var tableHtml =
-        '<div class="table-responsive">' +
+        '<div class="table-responsive table-bordered">' +
         '<table id="itemTable" class="table table-striped">' +
         '<thead>' +
         '<tr>' +

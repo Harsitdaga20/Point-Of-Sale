@@ -32,24 +32,21 @@ public class UserDto {
 
     public ModelAndView login(HttpServletRequest request, LoginForm loginForm) {
         NormalizeUtil.normalizeLoginForm(loginForm);
-        try{
-            ValidateFormUtil.validateForm(loginForm);
-        }
-        catch(Exception e){
-            infoData.setMessage(e.getMessage());
-            return new ModelAndView("redirect:/site/login");
-        }
 
         UserPojo userPojo = userService.getCheckUserByEmail(loginForm.getEmail());
-        boolean validatePassword = false;
+        if(Objects.isNull(userPojo)){
+            infoData.setMessage("User not registered. Kindly signup.");
+            return new ModelAndView("redirect:/site/login");
+        }
+        boolean validatePass = false;
         try {
-            validatePassword = PasswordUtil.validatePassword(loginForm.getPassword(), userPojo.getPassword());
+            validatePass = PasswordUtil.validatePassword(loginForm.getPassword(), userPojo.getPassword());
         } catch (Exception e) {
             infoData.setMessage("Error validating password");
             return new ModelAndView("redirect:/site/login");
         }
 
-        if (Objects.isNull(userPojo) && validatePassword) {
+        if (Objects.isNull(userPojo) || !validatePass) {
             infoData.setMessage("Invalid user credentials");
             return new ModelAndView("redirect:/site/login");
         }
@@ -85,6 +82,7 @@ public class UserDto {
         }
         userService.getCheckUser(ConvertUtil.convertLoginFormToUserPojo(loginForm));
         userService.addUser(ConvertUtil.convertLoginFormToUserPojo(loginForm));
+        infoData.setMessage("");
         return login(req, loginForm);
     }
 

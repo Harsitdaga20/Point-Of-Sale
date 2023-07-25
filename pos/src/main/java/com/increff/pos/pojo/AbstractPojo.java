@@ -13,7 +13,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @MappedSuperclass
-public class AbstractPojo {
+public abstract class AbstractPojo {
     @CreationTimestamp
     private ZonedDateTime createdAt;
     @UpdateTimestamp

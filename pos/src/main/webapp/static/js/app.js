@@ -86,7 +86,7 @@ function writeFileData(arr,filename){
     }
     var tempLink = document.createElement('a');
     tempLink.href = fileUrl;
-    tempLink.setAttribute('download', filename+getCurrentISTDateString()+'.tsv');
+    tempLink.setAttribute('download', filename+"_"+getCurrentISTDateString()+'.tsv');
     tempLink.click(); 
 }
 var role;

@@ -6,6 +6,7 @@ import com.increff.pos.pojo.OrderPojo;
 import com.increff.pos.service.ApiException;
 import com.increff.pos.service.DailySalesService;
 import com.increff.pos.service.OrderService;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Service
+@Log4j
 public class DailySalesDto {
     @Autowired
     private DailySalesService dailySalesService;
@@ -26,10 +28,12 @@ public class DailySalesDto {
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Asia/Kolkata"));
         ZonedDateTime startDateTime = now.minusDays(1).withHour(0).withMinute(0).withSecond(0).withNano(00);
         ZonedDateTime endDateTime = now.minusDays(1).withHour(23).withMinute(59).withSecond(59);
+        log.info("Scheduler run");
         List<OrderPojo> orderPojoList = orderService.getOrdersByDateWithInvoiced(startDateTime, endDateTime);
         DailySalesPojo dailySalesPojo = getRevenueAndCounts(orderPojoList);
         dailySalesPojo.setDate(startDateTime);
         dailySalesService.addDailySale(dailySalesPojo);
+        log.info("scheduler stopped");
     }
 
     private DailySalesPojo getRevenueAndCounts(List<OrderPojo> orderPojoList) throws ApiException {
